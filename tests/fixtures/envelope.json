@@ -1,0 +1,58 @@
+{
+  "valid": [
+    {
+      "name": "标准信封",
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"GitHub 登录\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"updatedAt\":\"2026-01-01T00:00:00Z\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}"
+    },
+    {
+      "name": "省略时间戳",
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"密钥\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}"
+    }
+  ],
+  "invalid": [
+    {
+      "json": "{",
+      "reason": "非法 JSON"
+    },
+    {
+      "json": "{\"id\":\"x\",\"name\":\"n\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}",
+      "reason": "id 必须是 UUID v4"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-1c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"n\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}",
+      "reason": "UUID 非 v4"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}",
+      "reason": "name 为空"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}",
+      "reason": "name 超长（257 字符）"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"n\",\"encrypted\":{\"algorithm\":\"\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}",
+      "reason": "algorithm 为空"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"n\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}",
+      "reason": "kdf 为空"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"n\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"!!!\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}",
+      "reason": "kdfSalt 非 base64"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"n\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"\",\"ciphertext\":\"Y2lwaGVydGV4dA==\"}}",
+      "reason": "nonce 为空"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"n\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"!!!\"}}",
+      "reason": "ciphertext 非 base64"
+    },
+    {
+      "json": "{\"id\":\"3b6c8e5a-2f4b-4c3d-9a7e-1f2b3c4d5e6f\",\"name\":\"n\",\"encrypted\":{\"algorithm\":\"AES-256-GCM\",\"kdf\":\"Argon2id\",\"kdfSalt\":\"c2FsdA==\",\"nonce\":\"bm9uY2UxMjM0NTY3OA==\",\"ciphertext\":\"\"}}",
+      "reason": "ciphertext 为空"
+    }
+  ]
+}
