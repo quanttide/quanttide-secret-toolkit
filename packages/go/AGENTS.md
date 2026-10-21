@@ -1,6 +1,6 @@
 # AGENTS（quanttide-secret-toolkit Go 基础库）
 
-面向在 Go 包内工作的编码 agent 的指令。**动手前先读「关键文件」一节**；契约相关改动严格遵守「harness 工作纪律」。路线与交接状态见 [ROADMAP.md](ROADMAP.md) 与 [STATUS.md](STATUS.md)。
+面向在 Go 包内工作的编码 agent 的指令。**动手前先读「关键文件」一节**；契约相关改动严格遵守「harness 工作纪律」。路线与交接状态见 [ROADMAP.md](docs/dev-guide/roadmap.md) 与 [STATUS.md](STATUS.md)。
 
 ## 本包是什么
 
