@@ -1,6 +1,6 @@
 # quanttide-secret-toolkit
 
-量潮机密管理工具箱
+量潮机密管理标准库
 
 ## Go 基础库
 

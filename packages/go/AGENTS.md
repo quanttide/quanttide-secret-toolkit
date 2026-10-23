@@ -4,7 +4,7 @@
 
 ## 本包是什么
 
-工具库的 Go 实现（`pkg/`：envelope/credential/redact）+ 契约测试 runner（`contracttest/`）+ 设计文档（`docs/`）。fixtures 在工具库根 `tests/fixtures/`（本包相对路径上溯三级）。
+标准库的 Go 实现（`pkg/`：envelope/credential/redact）+ 契约测试 runner（`contracttest/`）+ 设计文档（`docs/`）。fixtures 在标准库根 `tests/fixtures/`（本包相对路径上溯三级）。
 
 ## 关键文件（按优先级阅读）
 

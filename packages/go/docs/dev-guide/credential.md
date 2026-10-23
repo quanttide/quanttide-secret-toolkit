@@ -9,7 +9,7 @@
 1. **凭证类型** `Kind`：`password` / `api_key` / `token`（英文小写字符串，可直接存库、与接口报文流转）
 2. **生命周期状态** `Status`：`active`（正常使用）→ `rotating`（轮换中，新旧并存）→ `revoked`（回收/吊销）；`expired`（过期）由有效期驱动，可回收
 3. **迁移表**（`CanTransition`）：active → rotating/revoked/expired；rotating → active/revoked；expired → revoked；revoked 为终态
-4. **未知值必须报错**：`ParseKind` / `ParseStatus` 对未知值返回错误，不用 UNKNOWN 兜底（与支付工具库纪律一致）
+4. **未知值必须报错**：`ParseKind` / `ParseStatus` 对未知值返回错误，不用 UNKNOWN 兜底（与支付标准库纪律一致）
 5. **主干边界**：实体与存储留在应用壳（`qtcloud-secret provider`），本包只有契约与纯函数
 
 ## 待定

@@ -1,6 +1,6 @@
 # quanttide-secret-toolkit Go 基础库
 
-量潮机密管理工具箱的 Go 基础库，提供机密管理领域的通用基础能力：密文信封契约、凭证生命周期状态、敏感信息脱敏。遵循 Go 社区标准布局：`pkg/` 为可被外部导入的公共包，`internal/` 为库内部实现，`examples/` 为使用示例。
+量潮机密管理标准库的 Go 基础库，提供机密管理领域的通用基础能力：密文信封契约、凭证生命周期状态、敏感信息脱敏。遵循 Go 社区标准布局：`pkg/` 为可被外部导入的公共包，`internal/` 为库内部实现，`examples/` 为使用示例。
 
 ## 布局
 
@@ -10,7 +10,7 @@
 | `pkg/credential` | 凭证类型与状态契约：`Kind`（password/api_key/token）、`Status`（active/rotating/revoked/expired）与迁移校验（`CanTransition`） |
 | `pkg/redact` | 敏感信息脱敏：`Mask` 通用掩码（保留首尾、中间打码）与 `MaskToken` 凭证类默认掩码 |
 | `internal/` | 库的内部实现，外部不可导入（预留） |
-| `contracttest/` | 契约测试 Go runner（消费工具库根 `tests/fixtures/`，fixtures 是契约唯一权威） |
+| `contracttest/` | 契约测试 Go runner（消费标准库根 `tests/fixtures/`，fixtures 是契约唯一权威） |
 | `docs/` | 使用指南与设计决策记录（`user-guide/envelope.md` 信封 JSON 形状；`dev-guide/envelope.md`、`dev-guide/credential.md`、`dev-guide/redact.md`） |
 | `examples/` | 使用示例（`go run ./examples/secret`） |
 
@@ -37,7 +37,7 @@ redact.MaskToken("sk-abcdef123456") // "sk-a*******3456"
 
 ## 契约测试
 
-共享测试向量（JSON fixtures，工具库根 `tests/fixtures/`）是契约**唯一权威**，各语言实现消费同一份断言一致。Go runner 位于 `contracttest/`：
+共享测试向量（JSON fixtures，标准库根 `tests/fixtures/`）是契约**唯一权威**，各语言实现消费同一份断言一致。Go runner 位于 `contracttest/`：
 
 ```bash
 go test ./contracttest
